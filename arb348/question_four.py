@@ -9,6 +9,7 @@ Date: March 26, 2015
 import numpy
 import matplotlib.pyplot as plt 
 from numpy import newaxis
+import warnings 
 
 def AnswerQuestionFour():
     """The code to produce the answer to question 4, which includes producing the
@@ -34,22 +35,30 @@ def AnswerQuestionFour():
 
 def HandleInteratorExceptions(FirstAxis, SecondAxis):
     """ A function for handling errors that arise from the Mandelbrot iteration."""
-    try:
-        N_max = 50
-        # Here we construct the grid. The 'newaxis' object can be used in all slicing operations to create an axis of length one.
-        c = FirstAxis[:, newaxis] + 1j*SecondAxis[newaxis,:]
-        
-        # Perform the Mandelbrot iteration.
-        numpy.seterr(invalid ='ignore', over='ignore')
-        
-        z = c
-        for v in range(N_max):
-            z = z**2 + c
-        return z
-  
-    except ValueError:
-        raise ValueError("Value error") 
-          
+    
+    # NOTE: There is an overflow warning that is generated if the N_Max variable is set too high. I've set it to 9
+    # since this is the highest I found it could be set without causing an overflow error. 
+    
+    with warnings.catch_warnings():
+        warnings.filterwarnings('error')
+        try:
+            N_max = 9
+            # Here we construct the grid. The 'newaxis' object can be used in all slicing operations to create an axis of length one.
+            c = FirstAxis[:, newaxis] + 1j*SecondAxis[newaxis,:]
+            
+            # Perform the Mandelbrot iteration.
+            #numpy.seterr(invalid ='ignore', over='ignore')
+            
+            z = c
+            for v in range(N_max):
+                z = z**2 + c
+            return z
+      
+        except Warning: 
+            print "Runtime Warning: in Question 4, an overflow occurred when you tried to run the Mandelbrot iteration."
+        finally:
+            return z
+
 def  SaveResultstoImage(MandelbrotSet):
     """ A short function for saving the output for question 4."""
     plt.imshow(MandelbrotSet.T, extent=[-2, 1, -1.5, 1.5])

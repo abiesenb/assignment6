@@ -17,7 +17,6 @@ def AnswerQuestionThree():
     # fed as input. So here, we take the distance between the InitialArray values
     # and 0.5, and find the index values of the minimum elements (i.e the first column, or [:,0]. 
     # Then, use the choose attribute to construct an array from that index array.
-              
     Question3PartAArray = numpy.argsort(abs(InitialArray - 0.5))[:,0].choose(InitialArray.transpose())
         
     # We can use what we have in part (A) to answer the same question.         
