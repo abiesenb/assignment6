@@ -8,7 +8,8 @@ Date: March 26, 2015
 import numpy
 
 def AnswerQuestionOne():
-       
+    """Perform the calculations necessary to answer question 1 from Assignment 6."""
+    
     # Create the functions first array. 
     InitialArray = CreateInitialArray()
     
@@ -28,6 +29,6 @@ def AnswerQuestionOne():
     return (InitialArray, Question1PartAArray, Question1PartBArray, Question1PartCArray, Question1PartDArray)
 
 def CreateInitialArray():
-# Write a function that creates the specific array requested in question 1.
+    """creates the specific array requested in question 1."""
     return numpy.arange(1,16,1).reshape((3,5)).transpose()
 

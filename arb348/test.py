@@ -14,7 +14,9 @@ from question_two import AnswerQuestionTwo
 from question_three import AnswerQuestionThree
 
 class TestAssignment6Functions(unittest.TestCase):
-
+    """This class provides the structure for the unit testing we perform for each
+    function responsible for creating the answers to Assignment 6."""
+    
     def testQuestionOne(self):   
         """ Test to ensure that Question 1's output is correct."""
         

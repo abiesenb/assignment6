@@ -2,11 +2,13 @@
 This is programming for Assignment 6. This is the main program which will 
 generate my answers for the assignment, which deals with programming in NumPy.
 Each of the questions from the assignment has its own module, and from each module 
-we import the function responsible for generating the required output. In additon, I 
+we import the function responsible for generating the required output. In addition, I 
 performed some unit testing of the functions used to generate the results displayed here. 
 The modules which generates the answers to question 4, which deals with generating an image of a 
-mandelbrot fractal, is also run here. The png file it creates is saved in the same directory as the 
+Mandelbrot fractal, is also run here. The .png file it creates is saved in the same directory as the 
 project python files.     
+
+Note that the unit tests I performed are structured in a class and is separate (in the test.py file) from the main program.
 
 Author: Adam Biesenbach
 Date: March 26, 2015

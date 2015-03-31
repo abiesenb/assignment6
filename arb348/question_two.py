@@ -12,6 +12,7 @@ def AnswerQuestionTwo():
      prints the results. the 'arrange' creates evenly spaced elements. Reshape 
      changes the dimensions. """
      
+    # Create initial array.
     a = numpy.arange(25).reshape(5, 5)
     aTransposed = numpy.transpose(a)
     
