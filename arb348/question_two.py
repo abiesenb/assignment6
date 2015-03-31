@@ -1,5 +1,5 @@
 '''
-This is the program for producing the results for question 1 from Assignment 6.
+This is the program for producing the results for question 2 from Assignment 6.
 
 Author: Adam Biesenbach
 Date: March 26, 2015
