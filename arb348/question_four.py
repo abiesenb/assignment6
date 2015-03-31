@@ -20,6 +20,7 @@ def AnswerQuestionFour():
     # Save the results to an image file.
     SaveResultstoImage(MandelbrotMask)
      
+       
 def ComputeGrid():  
     """The code to compute the grid used in the Mandelbrot calculation. """
     with warnings.catch_warnings():
@@ -30,15 +31,13 @@ def ComputeGrid():
 def HandleComputeGrid():
     """ Handle an exception in case the iteration overflows."""
     
-    # NOTE: There is an overflow warning that is generated if the N_Max variable is set too high. 
+    # NOTE: There is an overflow warning that might be generated if the N_Max variable is set too high. 
     try:
         (xRange, yRange, mask, N_max, some_threshold) = SetVariables()
-       
         # Construct the grid. 
         for x in range(xRange.size):   
             for y in range(yRange.size):      
                 c = xRange[x] + 1j*yRange[y]
-                
                 # Perform the Mandelbrot iteration.
                 z = c
                 for v in range(N_max):
@@ -69,12 +68,11 @@ def SetVariables():
     # Create each of the arrays for the two axes, that will eventually 
     # be used to create the grid.
     
-    xRange = numpy.arange(xStart, xEnd+xStep, xStep)
-    yRange = numpy.arange(yStart, yEnd+yStep, yStep)
+    xRange = numpy.arange(xStart, xEnd, xStep)
+    yRange = numpy.arange(yStart, yEnd, yStep)
     
-    # Construct the initial mask, which is all True.
+    # Construct the initial mask, which is a Boolean of all true values.
     mask = numpy.ones((xRange.size, yRange.size), dtype = bool)
-    
     return (xRange, yRange, mask, N_max, some_threshold)
 
 def SaveResultstoImage(MandelbrotSet):
@@ -83,4 +81,3 @@ def SaveResultstoImage(MandelbrotSet):
     plt.imshow(MandelbrotSet.T, extent=[-2, 1, -1.5, 1.5])
     plt.gray()
     return plt.savefig('mandelbrot.png')    
-    
